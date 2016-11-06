@@ -31,3 +31,11 @@
 # Debug files
 *.dSYM/
 *.su
+
+# (Vim) temps
+*.swp
+*~
+
+# Builds
+build/
+Build/
