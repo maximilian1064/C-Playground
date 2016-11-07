@@ -39,3 +39,8 @@
 # Builds
 build/
 Build/
+
+# PDF
+*.pdf
+
+*.pyc
