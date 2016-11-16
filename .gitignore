@@ -44,3 +44,8 @@ Build/
 *.pdf
 
 *.pyc
+
+# test and playground codes
+*test*
+*temp*
+*playground*
