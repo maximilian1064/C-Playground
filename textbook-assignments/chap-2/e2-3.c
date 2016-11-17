@@ -1,3 +1,7 @@
+/*====================================*/
+/*| HEX STRING TO INTEGER CONVERSION |*/
+/*====================================*/
+
 #include <stdio.h>
 #include <stdbool.h>
 

@@ -1,13 +1,19 @@
-#include<stdio.h>
+/*===============================*/
+/*| COUNT THE 1-BITS OF INTEGER |*/
+/*===============================*/
 
 /*
  *x&(x-1) deletes the rightmost 1-bit of x
- *REASON: x: [left bits][rightmost 1-bit][0-bits]
- *        x-1: x+0xFFFFFFFF
- *           [left bits][   0-bit       ][1-bits]
- *        x&(x-1):
- *           [left bits][   0-bit       ][0-bits]
+ *
+ *REASON: 
+ *x: [left bits][rightmost 1-bit][0-bits]
+ *x-1: x+0xFFFFFFFF
+ *   [left bits][   0-bit       ][1-bits]
+ *x&(x-1):
+ *   [left bits][   0-bit       ][0-bits]
  */
+
+#include<stdio.h>
 
 int bitcount (int x)
 {

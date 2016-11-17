@@ -1,3 +1,7 @@
+/*==================================================================*/
+/*| DELETE ALL THE CHARACTERS IN S1 THAT MATCH ANY CHARACTER IN S2 |*/
+/*==================================================================*/
+
 #include<stdio.h>
 enum boolean {false,true};
 

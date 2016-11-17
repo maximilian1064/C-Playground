@@ -1,3 +1,7 @@
+/*===============================================================*/
+/*| INTEGER TO STRING, MACHINE INDEPENDENT, CORRECT FOR INT_MIN |*/
+/*===============================================================*/
+
 #include<stdio.h>
 
 void reverse(char s[])

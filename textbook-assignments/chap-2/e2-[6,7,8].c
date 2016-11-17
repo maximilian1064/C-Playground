@@ -1,14 +1,23 @@
+/*====================*/
+/*| C BIT OPERATIONS |*/
+/*====================*/
+
 #include<stdio.h>
 #include<stdlib.h>
+
+/*set n bits of x starting from position p (counting from right) 
+to the rightmost n bits of y*/
 
 unsigned int setbits(unsigned int x, unsigned int p, 
                      unsigned int n, unsigned int y)
 {
-    /*
-     *Don't ever try shifting of type length, undefined behavior in C/C++
-     */
+    /*Don't ever try shifting of type length, undefined behavior in C/C++*/
+
     return ( x & ~((~0ul<<(p+1))^(~0ul<<(p+1-n))) ) ^ ( (y<<(p+1-n)) & ~(~0ul<<(p+1)));
 }
+
+
+/*invert n bits of x starting from position p (counting from right)*/
 
 unsigned int invert(unsigned int x, unsigned int p,
                     unsigned int n)
@@ -16,10 +25,15 @@ unsigned int invert(unsigned int x, unsigned int p,
     return x ^ ((~0ul<<(p+1))^(~0ul<<(p+1-n)));
 }
 
+
+/*right rotation of x with n bits*/
+
 unsigned int rightrot(unsigned int x, unsigned int n)
 {
     return (x >> n) ^ (x << ((unsigned int)(sizeof(int))*8-n) );
 }
+
+
 
 int main()
 {
