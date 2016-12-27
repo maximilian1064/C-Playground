@@ -5,34 +5,61 @@
 | OF PATTERNS IN THE INPUT LINES       |
 ========================================*/
 
+/*========================================
+| UPADTE: More fun with Unix Interface |
+| stderr, stdin, main() arguments      |
+| Code can be largely compressed using |
+| string.h                             |
+========================================*/
+
 #include<stdio.h> 
 
-// maximum input length
-#define MAX_SIZE 1000
+// maximum input length, can be an option too
+#define MAX_SIZE 100000
 #define MAX_PATTERN_SIZE 100
 
 void getInput( char input[], int lim);
 int custom_getline( char s[], char input[], int lineEnd);
 int stringIndex( char s[], char pattern[]);
 
-int main()
+int main(int argc, char* argv[])
 {
     char input[MAX_SIZE];
     char s[MAX_SIZE];
     char pattern[MAX_PATTERN_SIZE];
 
     /*get pattern*/
-    printf("Input your pattern:\n");
-    getInput( pattern, MAX_PATTERN_SIZE);
+    /*printf("Input your pattern:\n");*/
+    /*getInput( pattern, MAX_PATTERN_SIZE);*/
+    if(argc==1)
+    {
+        fprintf(stderr, "\nNo Pattern is given\n");
+        return 1;
+    }
+    else if(argc>2)
+    {
+        fprintf(stderr, "\nMore than one option is given\n");
+        return 2;
+    }
+    else
+    {
+        int i=0;
+        while((pattern[i]=argv[1][i])!='\0' && i<MAX_PATTERN_SIZE-1)
+            i++;
+        if(pattern[i]!='\0')
+        {
+            fprintf(stderr, "\nExceeds maximal pattern size\n");
+            return 3;
+        }
+    }
 
     /*get input*/
-    printf("\nInput your lines:\n");
+    /*printf("\nInput your lines:\n");*/
     getInput( input, MAX_SIZE);
     printf("\n");
     
     /*Get lines and print matched lines*/
     int lineEnd = 0;
-    int found = 0;
     int rightmost_pos;
 
     while( lineEnd != -1 )
@@ -41,14 +68,11 @@ int main()
         rightmost_pos = stringIndex(s, pattern); 
 
         if(rightmost_pos != -1 )
-        {
-            printf("%d::%s",rightmost_pos, s);
-            found++;
-        }
+            printf("%s", s);
     }
 
     /*some legacy*/
-    return found;
+    return 0;
 
 }
 
